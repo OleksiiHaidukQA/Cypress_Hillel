@@ -4,7 +4,7 @@ module.exports = defineConfig({
   watchForFileChanges: false,
   defaultCommandTimeout: 10000,
   viewportWidth: 1980,
-  viewportHeight: 1080,
+  viewportHeight: 3000,
   //baseUrl: 'https://example.com'
   //blockHosts: ['*.google.com'],
   //chromeWebSecurity: false,
