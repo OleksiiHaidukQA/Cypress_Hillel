@@ -3,8 +3,8 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   watchForFileChanges: false,
   defaultCommandTimeout: 10000,
-  viewportWidth: 1980,
-  viewportHeight: 3000,
+  viewportWidth: 1280,
+  viewportHeight: 1000,
   //baseUrl: 'https://example.com'
   //blockHosts: ['*.google.com'],
   //chromeWebSecurity: false,
