@@ -13,6 +13,7 @@ module.exports = defineConfig({
   video: false,
   //responseTimeout: 30000,
   e2e: {
+    baseUrl: 'https://guest:welcome2qauto@qauto2.forstudy.space/',
     retries: {
       runMode: 1, //without UI
       openMode: 1 //with UI

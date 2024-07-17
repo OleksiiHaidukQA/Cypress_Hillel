@@ -1,4 +1,4 @@
-export const Errors = {
+export const errors = {
     invalidName: 'Name is invalid',
     nameLength: 'Name has to be from 2 to 20 characters long',
     nameRequired: 'Name required',

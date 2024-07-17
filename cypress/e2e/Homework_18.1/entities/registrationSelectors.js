@@ -1,4 +1,4 @@
-export const RegistrationSelectors = {
+export const registrationSelectors = {
     registrationButton: `.hero-descriptor_btn.btn.btn-primary`,
     name: '#signupName',
     lastName: '#signupLastName',

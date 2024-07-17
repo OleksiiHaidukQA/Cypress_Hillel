@@ -1,14 +1,13 @@
-import { RegistrationSelectors } from './entities/registrationSelectors';
-import { Errors } from './common/errors';
+import { registrationSelectors } from './entities/registrationSelectors';
+import { errors } from './common/errors';
 import { GenerateChars } from './utils/GeneratingChars';
 
 describe('registration flow', () => {
     const generateChars = new GenerateChars();
-    const urlMock = 'https://guest:welcome2qauto@qauto2.forstudy.space/';
     
     beforeEach(() => {
-        cy.visit(urlMock);
-        cy.get(RegistrationSelectors.registrationButton).should('be.visible').click();
+        cy.visit('/');
+        cy.get(registrationSelectors.registrationButton).should('be.visible').click();
     });
 
     it('registration process', () => {
@@ -17,39 +16,39 @@ describe('registration flow', () => {
         const emailMock = generateChars.getRandomEmail(nameLength);
         const passwordMock = generateChars.getRandomPassword(nameLength);
 
-        cy.get(RegistrationSelectors.name).type(nameMock);
-        cy.get(RegistrationSelectors.lastName).type(nameMock);
-        cy.get(RegistrationSelectors.email).type(emailMock);
-        cy.get(RegistrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.repeatPassword).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.submit).click();
+        cy.get(registrationSelectors.name).type(nameMock);
+        cy.get(registrationSelectors.lastName).type(nameMock);
+        cy.get(registrationSelectors.email).type(emailMock);
+        cy.get(registrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.repeatPassword).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.submit).click();
     });
     
     it('error while checking name', () => {
-        cy.get(RegistrationSelectors.name).type('1');
-        cy.get(RegistrationSelectors.lastName).focus();
-        cy.get(RegistrationSelectors.invalidFeedback).contains(Errors.invalidName).should('be.visible');
-        cy.get(RegistrationSelectors.invalidFeedback).contains(Errors.nameLength).should('be.visible');
+        cy.get(registrationSelectors.name).type('1');
+        cy.get(registrationSelectors.lastName).focus();
+        cy.get(registrationSelectors.invalidFeedback).contains(errors.invalidName).should('be.visible');
+        cy.get(registrationSelectors.invalidFeedback).contains(errors.nameLength).should('be.visible');
     });
 
     it('error while checking last name', () => {
-        cy.get(RegistrationSelectors.lastName).type('1');
-        cy.get(RegistrationSelectors.name).focus();
-        cy.get(RegistrationSelectors.invalidFeedback).contains(Errors.lastNameInvalid).should('be.visible');
+        cy.get(registrationSelectors.lastName).type('1');
+        cy.get(registrationSelectors.name).focus();
+        cy.get(registrationSelectors.invalidFeedback).contains(errors.lastNameInvalid).should('be.visible');
     });
 
     it('error while name is empty', () => {
-        cy.get(RegistrationSelectors.name).focus();
-        cy.get(RegistrationSelectors.lastName).focus();
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.nameRequired).should('be.visible');
-        cy.get(RegistrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.name).focus();
+        cy.get(registrationSelectors.lastName).focus();
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.nameRequired).should('be.visible');
+        
     });
 
     it('error while last name is empty', () => {
-        cy.get(RegistrationSelectors.lastName).focus();
-        cy.get(RegistrationSelectors.name).focus();
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.lastNameRequired).should('be.visible');
-        cy.get(RegistrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.lastName).focus();
+        cy.get(registrationSelectors.name).focus();
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.lastNameRequired).should('be.visible');
+        cy.get(registrationSelectors.submit).should('be.disabled');
     });
 
     it('error while email is invalid', () => {
@@ -58,21 +57,20 @@ describe('registration flow', () => {
         const invalidEmail = 'invalidEmail';
         const passwordMock = generateChars.getRandomPassword(nameLength);
 
-        cy.get(RegistrationSelectors.name).type(nameMock);
-        cy.get(RegistrationSelectors.lastName).type(nameMock);
-        cy.get(RegistrationSelectors.email).type(invalidEmail);
-        cy.get(RegistrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.repeatPassword).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.submit).click({ force: true });
-
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.emailIsIncorrect).should('be.visible');
+        cy.get(registrationSelectors.name).type(nameMock);
+        cy.get(registrationSelectors.lastName).type(nameMock);
+        cy.get(registrationSelectors.email).type(invalidEmail);
+        cy.get(registrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.repeatPassword).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.emailIsIncorrect).should('be.visible');
     });
 
     it('error while email is empty', () => {
-        cy.get(RegistrationSelectors.email).focus();
-        cy.get(RegistrationSelectors.password).focus();
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.emailRequired).should('be.visible');
-        cy.get(RegistrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.email).focus();
+        cy.get(registrationSelectors.password).focus();
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.emailRequired).should('be.visible');
+        cy.get(registrationSelectors.submit).click({ force: true });
     });
 
     it('error while password is invalid', () => {
@@ -81,21 +79,21 @@ describe('registration flow', () => {
         const emailMock = generateChars.getRandomEmail(nameLength);
         const invalidPassword = 'short1';
 
-        cy.get(RegistrationSelectors.name).type(nameMock);
-        cy.get(RegistrationSelectors.lastName).type(nameMock);
-        cy.get(RegistrationSelectors.email).type(emailMock);
-        cy.get(RegistrationSelectors.password).type(invalidPassword, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.repeatPassword).type(invalidPassword, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.name).type(nameMock);
+        cy.get(registrationSelectors.lastName).type(nameMock);
+        cy.get(registrationSelectors.email).type(emailMock);
+        cy.get(registrationSelectors.password).type(invalidPassword, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.repeatPassword).type(invalidPassword, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.submit).click({ force: true });
 
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.passwordInvalid).should('be.visible');
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.passwordInvalid).should('be.visible');
     });
 
     it('error while password is empty', () => {
-        cy.get(RegistrationSelectors.password).focus();
-        cy.get(RegistrationSelectors.repeatPassword).focus();
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.passwordRequired).should('be.visible');
-        cy.get(RegistrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.password).focus();
+        cy.get(registrationSelectors.repeatPassword).focus();
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.passwordRequired).should('be.visible');
+        cy.get(registrationSelectors.submit).click({ force: true });
     });
 
     it('error while passwords do not match', () => {
@@ -104,13 +102,13 @@ describe('registration flow', () => {
         const emailMock = generateChars.getRandomEmail(nameLength);
         const passwordMock = generateChars.getRandomPassword(nameLength);
 
-        cy.get(RegistrationSelectors.name).type(nameMock);
-        cy.get(RegistrationSelectors.lastName).type(nameMock);
-        cy.get(RegistrationSelectors.email).type(emailMock);
-        cy.get(RegistrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.repeatPassword).type('DifferentPassword1!', { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.submit).click({ force: true });
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.passwordInvalid).should('be.visible');
+        cy.get(registrationSelectors.name).type(nameMock);
+        cy.get(registrationSelectors.lastName).type(nameMock);
+        cy.get(registrationSelectors.email).type(emailMock);
+        cy.get(registrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.repeatPassword).type('DifferentPassword1!', { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.passwordInvalid).should('be.visible');
     });
 
     it('error while re-enter password is empty', () => {
@@ -119,13 +117,12 @@ describe('registration flow', () => {
         const emailMock = generateChars.getRandomEmail(nameLength);
         const passwordMock = generateChars.getRandomPassword(nameLength);
 
-        cy.get(RegistrationSelectors.name).type(nameMock);
-        cy.get(RegistrationSelectors.lastName).type(nameMock);
-        cy.get(RegistrationSelectors.email).type(emailMock);
-        cy.get(RegistrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
-        cy.get(RegistrationSelectors.repeatPassword).focus().blur();
-        cy.get(RegistrationSelectors.submit).click({ force: true });
-
-        cy.get(RegistrationSelectors.invalidFeedbackP).contains(Errors.passwordMatchRequired).should('be.visible');
+        cy.get(registrationSelectors.name).type(nameMock);
+        cy.get(registrationSelectors.lastName).type(nameMock);
+        cy.get(registrationSelectors.email).type(emailMock);
+        cy.get(registrationSelectors.password).type(passwordMock, { sensitive: true, parseSpecialCharSequences: false });
+        cy.get(registrationSelectors.repeatPassword).focus().blur();
+        cy.get(registrationSelectors.submit).click({ force: true });
+        cy.get(registrationSelectors.invalidFeedbackP).contains(errors.passwordMatchRequired).should('be.visible');
     });
 });
