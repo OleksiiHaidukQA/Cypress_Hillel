@@ -3,8 +3,8 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   watchForFileChanges: false,
   defaultCommandTimeout: 10000,
-  viewportWidth: 1980,
-  viewportHeight: 3000,
+  viewportWidth: 1280,
+  viewportHeight: 1000,
   //baseUrl: 'https://example.com'
   //blockHosts: ['*.google.com'],
   //chromeWebSecurity: false,
@@ -13,6 +13,7 @@ module.exports = defineConfig({
   video: false,
   //responseTimeout: 30000,
   e2e: {
+    baseUrl: 'https://guest:welcome2qauto@qauto2.forstudy.space/',
     retries: {
       runMode: 1, //without UI
       openMode: 1 //with UI
