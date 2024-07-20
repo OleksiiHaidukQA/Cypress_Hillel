@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-18T14:51:02.996Z",
+    "end": "2024-07-18T14:51:06.864Z",
+    "duration": 3868,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "21401260-a4a6-4844-8863-06f9d82d327a",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_17.1/header.cy.js",
+      "file": "cypress/e2e/Homework_17.1/header.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "298a0ccb-967c-41c9-90cf-add39225ce49",
+          "title": "Header and Footer Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should find all buttons in the header",
+              "fullTitle": "Header and Footer Tests Should find all buttons in the header",
+              "timedOut": null,
+              "duration": 1661,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Проверка кнопки \"Home\"\ncy.get('nav.header_nav .header-link').contains('Home').should('be.visible');\n// Проверка кнопки \"About\"\ncy.get('nav.header_nav .header-link').contains('About').should('be.visible');\n// Проверка кнопки \"Contacts\"\ncy.get('nav.header_nav .header-link').contains('Contacts').should('be.visible');\n// Проверка кнопки \"Guest log in\"\ncy.get('.header_right .header-link').contains('Guest log in').should('be.visible');\n// Проверка кнопки \"Sign In\"\ncy.get('.header_right .header_signin').contains('Sign In').should('be.visible');",
+              "err": {},
+              "uuid": "7f2205e8-c0e1-470f-99a2-a26da5ce937f",
+              "parentUUID": "298a0ccb-967c-41c9-90cf-add39225ce49",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should find all links and buttons in the footer",
+              "fullTitle": "Header and Footer Tests Should find all links and buttons in the footer",
+              "timedOut": null,
+              "duration": 509,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Проверка ссылки на Facebook\ncy.get('[href=\"https://www.facebook.com/Hillel.IT.School\"] > .socials_icon').should('be.visible');\n// Проверка ссылки на Telegram\ncy.get('[href=\"https://t.me/ithillel_kyiv\"] > .socials_icon').should('be.visible');\n// Проверка ссылки на YouTube\ncy.get('[href=\"https://www.youtube.com/user/HillelITSchool?sub_confirmation=1\"] > .socials_icon').should('be.visible');\n// Проверка ссылки на Instagram\ncy.get('[href=\"https://www.instagram.com/hillel_itschool/\"] > .socials_icon').should('be.visible');\n// Проверка ссылки на LinkedIn\ncy.get('[href=\"https://www.linkedin.com/school/ithillel/\"] > .socials_icon').should('be.visible');\n// Проверка ссылки на сайт Hillel\ncy.get('a[href=\"https://ithillel.ua\"]').should('have.attr', 'href', 'https://ithillel.ua').and('be.visible');\n// Проверка ссылки на email поддержки+\ncy.get('a[href=\"mailto:developer@ithillel.ua\"]').should('have.attr', 'href', 'mailto:developer@ithillel.ua').and('be.visible');",
+              "err": {},
+              "uuid": "b285ce92-bf78-4cf0-85a8-5366b333983e",
+              "parentUUID": "298a0ccb-967c-41c9-90cf-add39225ce49",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should verify email link",
+              "fullTitle": "Header and Footer Tests Should verify email link",
+              "timedOut": null,
+              "duration": 363,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Проверка ссылки на почту\ncy.get('a[href=\"mailto:developer@ithillel.ua\"]').should('have.attr', 'href', 'mailto:developer@ithillel.ua').and('be.visible');",
+              "err": {},
+              "uuid": "e8e05291-deb7-4e66-b80c-fbd0e270ec26",
+              "parentUUID": "298a0ccb-967c-41c9-90cf-add39225ce49",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should open a new tab for the logo link",
+              "fullTitle": "Header and Footer Tests Should open a new tab for the logo link",
+              "timedOut": null,
+              "duration": 832,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Проверка открытия новой вкладки по клику на логотип\ncy.get('a[href=\"https://ithillel.ua\"]').should('have.attr', 'target', '_blank').and('be.visible');\n// Используем команду для проверки открытия новой вкладки\ncy.get('a[href=\"https://ithillel.ua\"]').then(link => {\n  const url = link.prop('href');\n  cy.request(url).its('status').should('eq', 200);\n});",
+              "err": {},
+              "uuid": "651d4f80-c48a-42dc-b831-0d83f3b4fec0",
+              "parentUUID": "298a0ccb-967c-41c9-90cf-add39225ce49",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7f2205e8-c0e1-470f-99a2-a26da5ce937f",
+            "b285ce92-bf78-4cf0-85a8-5366b333983e",
+            "e8e05291-deb7-4e66-b80c-fbd0e270ec26",
+            "651d4f80-c48a-42dc-b831-0d83f3b4fec0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3365,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

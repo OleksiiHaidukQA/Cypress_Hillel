@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-20T11:12:00.254Z",
+    "end": "2024-07-20T11:12:06.503Z",
+    "duration": 6249,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1d71d5cd-93bb-49e0-8116-b96ea45307cc",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "file": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c66c3b9d-34bf-4e64-8dbe-e7d4884c6791",
+          "title": "Add Car",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a car",
+              "fullTitle": "Add Car should add a car",
+              "timedOut": null,
+              "duration": 377,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const carDetails = {\n  brand: 'Porsche',\n  model: 'Panamera',\n  mileage: '7'\n};\n_garagePage.garagePage.addCar(carDetails);\n_garagePage.garagePage.verifyCarIsAdded(`${carDetails.brand} ${carDetails.model}`);",
+              "err": {
+                "message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 5 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n\nBecause this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `Add Car`",
+                "estack": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 5 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n\nBecause this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `Add Car`\n    at mouseAction (https://guest:welcome2qauto@qauto.forstudy.space/__cypress/runner/cypress_runner.js:112038:68)\n    at Context.click (https://guest:welcome2qauto@qauto.forstudy.space/__cypress/runner/cypress_runner.js:112205:14)\n    at wrapped (https://guest:welcome2qauto@qauto.forstudy.space/__cypress/runner/cypress_runner.js:137994:19)\nFrom Your Spec Code:\n    at GaragePage.removeCar (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/pageObjects/garagePage.js:28:39)\n    at Context.eval (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/addCar.cy.js:27:15)",
+                "diff": null
+              },
+              "uuid": "8abb0362-f269-4a1d-be9d-8617c8a64157",
+              "parentUUID": "c66c3b9d-34bf-4e64-8dbe-e7d4884c6791",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8abb0362-f269-4a1d-be9d-8617c8a64157"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 377,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

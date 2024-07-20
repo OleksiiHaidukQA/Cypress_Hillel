@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-20T11:04:16.251Z",
+    "end": "2024-07-20T11:04:21.420Z",
+    "duration": 5169,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "350b6c2b-e276-4ed2-a576-51f8cb823523",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "file": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4a8b4123-1f21-4f22-bc3b-1ed21e98ee3a",
+          "title": "Add Car",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a car",
+              "fullTitle": "Add Car should add a car",
+              "timedOut": null,
+              "duration": 4584,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const carDetails = {\n  brand: 'Porsche',\n  model: 'Panamera',\n  mileage: '7'\n};\n_garagePage.garagePage.addCar(carDetails);\n_garagePage.garagePage.verifyCarIsAdded(`${carDetails.brand} ${carDetails.model}`);",
+              "err": {},
+              "uuid": "d9d7c58d-24dc-4648-b410-221f967c1060",
+              "parentUUID": "4a8b4123-1f21-4f22-bc3b-1ed21e98ee3a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d9d7c58d-24dc-4648-b410-221f967c1060"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4584,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-20T09:36:15.489Z",
+    "end": "2024-07-20T09:36:22.829Z",
+    "duration": 7340,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9a7172eb-8358-44b7-a2b8-adfc731888ac",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_19.1/addExpense.cy.js",
+      "file": "cypress/e2e/Homework_19.1/addExpense.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "eeaf32a4-16e8-47eb-a826-e7d040115fb2",
+          "title": "Add Fuel Expense",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a fuel expense",
+              "fullTitle": "Add Fuel Expense should add a fuel expense",
+              "timedOut": null,
+              "duration": 7272,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const expense = {\n  liters: '40',\n  totalCost: '50'\n};\ncy.get(':nth-child(1) > app-car > .car > .car-heading > .car_actions > .car_add-expense').click();\n_expensesPage.expensesPage.addFuelExpense(expense);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[aria-label=\"Add expense\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[aria-label=\"Add expense\"]`, but never found it.\n    at ExpensesPage.addFuelExpense (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/pageObjects/expensesPage.js:7:7)\n    at Context.eval (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/addExpense.cy.js:19:17)",
+                "diff": null
+              },
+              "uuid": "126f6485-fbac-42ba-93d2-ed45793a555d",
+              "parentUUID": "eeaf32a4-16e8-47eb-a826-e7d040115fb2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "126f6485-fbac-42ba-93d2-ed45793a555d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7272,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-19T13:23:38.468Z",
+    "end": "2024-07-19T13:23:45.710Z",
+    "duration": 7242,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "216acf2b-2685-420b-940b-c1bcd7fe05f1",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "file": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e9c211df-87a1-4c33-8760-85680cac1d57",
+          "title": "Add Car",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a car",
+              "fullTitle": "Add Car should add a car",
+              "timedOut": null,
+              "duration": 7189,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const car = {\n  make: 'Toyota',\n  model: 'Corolla',\n  plateNumber: 'ABC123'\n};\n_garagePage.garagePage.visit();\n_garagePage.garagePage.addCar(car);\n_garagePage.garagePage.verifyCarIsAdded(car);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[aria-label=\"Add car\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[aria-label=\"Add car\"]`, but never found it.\n    at GaragePage.addCar (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/pageObjects/garagePage.js:7:9)\n    at Context.eval (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/addCar.cy.js:19:15)",
+                "diff": null
+              },
+              "uuid": "b9d98adc-0671-4377-a4dd-9710f3e207cf",
+              "parentUUID": "e9c211df-87a1-4c33-8760-85680cac1d57",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b9d98adc-0671-4377-a4dd-9710f3e207cf"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7189,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

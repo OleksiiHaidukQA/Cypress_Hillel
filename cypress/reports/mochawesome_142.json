@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-19T20:09:41.387Z",
+    "end": "2024-07-19T20:09:48.413Z",
+    "duration": 7026,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "200396f1-e8a6-45f5-a23b-9df128b5c340",
+      "title": "",
+      "fullFile": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "file": "cypress/e2e/Homework_19.1/addCar.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e58bcd5b-45c0-42dc-949f-6d4ff90de831",
+          "title": "Add Car",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a car",
+              "fullTitle": "Add Car should add a car",
+              "timedOut": null,
+              "duration": 6906,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_garagePage.garagePage.visit();\n// Получаем случайную марку автомобиля\n_garagePage.garagePage.getRandomOption('#addCarBrand').then(brand => {\n  cy.get('#addCarBrand').select(brand);\n  // Получаем случайную модель автомобиля\n  _garagePage.garagePage.getRandomOption('#addCarModel').then(model => {\n    cy.get('#addCarModel').select(model);\n    // Добавляем автомобиль с случайными значениями\n    const car = {\n      brand,\n      model,\n      mileage: Math.floor(Math.random() * 1000).toString()\n    };\n    _garagePage.garagePage.addCar(car);\n    _garagePage.garagePage.verifyCarIsAdded(`${car.brand} ${car.model}`);\n  });\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[type=\"submit\"]`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Add Car`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `button[type=\"submit\"]`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Add Car`\n    at Context.eval (webpack://cypress_hillel/./cypress/e2e/Homework_19.1/addCar.cy.js:9:7)",
+                "diff": null
+              },
+              "uuid": "19e6b561-4aea-4eda-ac24-6996b19f2130",
+              "parentUUID": "e58bcd5b-45c0-42dc-949f-6d4ff90de831",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "19e6b561-4aea-4eda-ac24-6996b19f2130"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 6906,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

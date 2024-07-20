@@ -1,0 +1,202 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-18T15:56:16.753Z",
+    "end": "2024-07-18T15:56:21.730Z",
+    "duration": 4977,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7167b67f-52ec-4ec2-956d-e2908f5105c5",
+      "title": "",
+      "fullFile": "cypress/e2e/2-advanced-examples/misc.cy.js",
+      "file": "cypress/e2e/2-advanced-examples/misc.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "de70566a-1cba-4d28-8d1d-be194c7b6eb4",
+          "title": "Misc",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "cy.exec() - execute a system command",
+              "fullTitle": "Misc cy.exec() - execute a system command",
+              "timedOut": null,
+              "duration": 368,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// execute a system command.\n// so you can take actions necessary for\n// your test outside the scope of Cypress.\n// https://on.cypress.io/exec\n// we can use Cypress.platform string to\n// select appropriate command\n// https://on.cypress/io/platform\ncy.log(`Platform ${Cypress.platform} architecture ${Cypress.arch}`);\n// on CircleCI Windows build machines we have a failure to run bash shell\n// https://github.com/cypress-io/cypress/issues/5169\n// so skip some of the tests by passing flag \"--env circle=true\"\nconst isCircleOnWindows = Cypress.platform === 'win32' && Cypress.env('circle');\nif (isCircleOnWindows) {\n  cy.log('Skipping test on CircleCI');\n  return;\n}\n// cy.exec problem on Shippable CI\n// https://github.com/cypress-io/cypress/issues/6718\nconst isShippable = Cypress.platform === 'linux' && Cypress.env('shippable');\nif (isShippable) {\n  cy.log('Skipping test on ShippableCI');\n  return;\n}\ncy.exec('echo Jane Lane').its('stdout').should('contain', 'Jane Lane');\nif (Cypress.platform === 'win32') {\n  cy.exec(`print ${Cypress.config('configFile')}`).its('stderr').should('be.empty');\n} else {\n  cy.exec(`cat ${Cypress.config('configFile')}`).its('stderr').should('be.empty');\n  cy.exec('pwd').its('code').should('eq', 0);\n}",
+              "err": {},
+              "uuid": "50b55f35-84f0-4edc-b2f0-04cc52992915",
+              "parentUUID": "de70566a-1cba-4d28-8d1d-be194c7b6eb4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "cy.focused() - get the DOM element that has focus",
+              "fullTitle": "Misc cy.focused() - get the DOM element that has focus",
+              "timedOut": null,
+              "duration": 282,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/focused\ncy.get('.misc-form').find('#name').click();\ncy.focused().should('have.id', 'name');\ncy.get('.misc-form').find('#description').click();\ncy.focused().should('have.id', 'description');",
+              "err": {},
+              "uuid": "e58f1120-a2f9-490d-a45d-06c13b397008",
+              "parentUUID": "de70566a-1cba-4d28-8d1d-be194c7b6eb4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "cy.wrap() - wrap an object",
+              "fullTitle": "Misc cy.wrap() - wrap an object",
+              "timedOut": null,
+              "duration": 101,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/wrap\ncy.wrap({\n  foo: 'bar'\n}).should('have.property', 'foo').and('include', 'bar');",
+              "err": {},
+              "uuid": "d3675310-9007-466b-901e-b1736aeffd0c",
+              "parentUUID": "de70566a-1cba-4d28-8d1d-be194c7b6eb4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [
+            {
+              "uuid": "b311024b-9873-4673-ae5c-2dc1ccf49231",
+              "title": "Cypress.Screenshot",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "cy.screenshot() - take a screenshot",
+                  "fullTitle": "Misc Cypress.Screenshot cy.screenshot() - take a screenshot",
+                  "timedOut": null,
+                  "duration": 2702,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// https://on.cypress.io/screenshot\ncy.screenshot('my-image');",
+                  "err": {},
+                  "uuid": "462a371b-b43f-45b6-9a32-acf98651ad07",
+                  "parentUUID": "b311024b-9873-4673-ae5c-2dc1ccf49231",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Cypress.Screenshot.defaults() - change default config of screenshots",
+                  "fullTitle": "Misc Cypress.Screenshot Cypress.Screenshot.defaults() - change default config of screenshots",
+                  "timedOut": null,
+                  "duration": 104,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "Cypress.Screenshot.defaults({\n  blackout: ['.foo'],\n  capture: 'viewport',\n  clip: {\n    x: 0,\n    y: 0,\n    width: 200,\n    height: 200\n  },\n  scale: false,\n  disableTimersAndAnimations: true,\n  screenshotOnRunFailure: true,\n  onBeforeScreenshot() {},\n  onAfterScreenshot() {}\n});",
+                  "err": {},
+                  "uuid": "331c6883-abb2-46ea-836d-bc92f6a66905",
+                  "parentUUID": "b311024b-9873-4673-ae5c-2dc1ccf49231",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "462a371b-b43f-45b6-9a32-acf98651ad07",
+                "331c6883-abb2-46ea-836d-bc92f6a66905"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2806,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [
+            "50b55f35-84f0-4edc-b2f0-04cc52992915",
+            "e58f1120-a2f9-490d-a45d-06c13b397008",
+            "d3675310-9007-466b-901e-b1736aeffd0c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 751,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
