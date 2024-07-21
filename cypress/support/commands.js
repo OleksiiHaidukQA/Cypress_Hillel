@@ -17,3 +17,36 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
     }
     return originalFn(element, text, options);
 });
+
+// cypress/support/commands.js
+Cypress.Commands.add('createExpense', (carId, expense) => {
+    cy.request('POST', '/api/cars', {
+      car_id: carId,
+      liters: expense.liters,
+      total_cost: expense.totalCost,
+      date: Cypress.moment().format('YYYY-MM-DD'),
+      price_per_liter: expense.pricePerLiter
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      return response.body;
+    });
+  });
+
+  Cypress.Commands.add('addCar', (carDetails) => {
+    cy.request({
+      method: 'POST',
+      url: 'https://qauto.forstudy.space/api/cars',
+      body: {
+        brand: carDetails.brand,
+        model: carDetails.model,
+        mileage: carDetails.mileage
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      // Валидация ответа
+      expect(response.status).to.eq(200);
+      return response.body.data;
+    });
+  });
