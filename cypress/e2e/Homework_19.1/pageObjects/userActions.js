@@ -6,7 +6,7 @@ class UserActions {
         email: Cypress.env('userEmail'),
         password: Cypress.env('userPassword')
       };
-
+  
       cy.visit('/');
       cy.get('.btn.btn-outline-white.header_signup').click();
       cy.get('#signupName').type(user.firstName);
@@ -16,7 +16,7 @@ class UserActions {
       cy.get('#signupRepeatPassword').type(user.password);
       cy.contains('button', 'Sign up').click();
     }
-
+  
     loginUser() {
       cy.visit('/');
       cy.get('.btn.btn-outline-white.header_signin').click();
@@ -26,5 +26,5 @@ class UserActions {
       cy.url({ timeout: 10000 }).should('include', '/panel/garage'); // Убедитесь, что страница гаража загружена
     }
   }
-
+  
   export const userActions = new UserActions();

@@ -8,7 +8,7 @@ export default defineConfig({
       userPassword: 'Q123q123_'
     },
     setupNodeEvents(on, config) {
-     
+      // implement node event listeners here
     },
   },
   reporter: 'mochawesome',
