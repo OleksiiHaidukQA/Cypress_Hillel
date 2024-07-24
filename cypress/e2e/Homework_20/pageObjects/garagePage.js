@@ -4,7 +4,7 @@ class GaragePage {
     }
   
     addCar({ brand, model, mileage }) {
-      cy.get('.btn.btn-primary').click();
+      cy.get('.btn.btn-primary').contains('Add car').click();
       cy.get('#addCarBrand').select(brand);
       cy.get('#addCarModel').select(model);
       cy.get('input[name="mileage"]').type(mileage);

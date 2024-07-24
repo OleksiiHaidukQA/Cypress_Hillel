@@ -1,4 +1,3 @@
-// cypress/e2e/Homework_20/addCarWithInterception.cy.js
 describe('Add Car with Interception', () => {
     let carId;
   
@@ -28,13 +27,14 @@ describe('Add Car with Interception', () => {
   
       cy.wait('@createCar').then((interception) => {
         assert.equal(interception.response.statusCode, 201, 'Status code is 201');
-        carId = interception.response.body.id;
-      });
+        carId = interception.response.body.data.id; // Ensure you use the correct path for the id
+        cy.wrap(carId).as('carId');
     });
-  
-    // afterEach(() => {
-    //   if (carId) {
-    //     cy.request('DELETE', `https://qauto2.forstudy.space/api/cars/${carId}`);
-    //   }
-    // });
-  });
+});
+
+afterEach(() => {
+    if (carId) {
+        cy.request('DELETE', `https://qauto.forstudy.space/api/cars/${carId}`);
+    }
+});
+});

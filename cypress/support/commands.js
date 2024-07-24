@@ -18,35 +18,50 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
     return originalFn(element, text, options);
 });
 
-// cypress/support/commands.js
-Cypress.Commands.add('createExpense', (carId, expense) => {
-    cy.request('POST', '/api/cars', {
-      car_id: carId,
-      liters: expense.liters,
-      total_cost: expense.totalCost,
-      date: Cypress.moment().format('YYYY-MM-DD'),
-      price_per_liter: expense.pricePerLiter
-    }).then((response) => {
-      expect(response.status).to.eq(200);
-      return response.body;
-    });
-  });
+Cypress.Commands.add('addCar', (carDetails) => {
+  cy.intercept('POST', '/api/cars').as('createCar');
+  
+  cy.get('.btn.btn-primary').first().click(); // Клик только на первый найденный элемент
+  cy.get('#addCarBrand').select(carDetails.brand);
+  cy.get('#addCarModel').select(carDetails.model);
+  cy.get('input[name="mileage"]').type(carDetails.mileage);
+  cy.get('.modal-footer > .btn-primary').click();
 
-  Cypress.Commands.add('addCar', (carDetails) => {
-    cy.request({
-      method: 'POST',
-      url: 'https://qauto.forstudy.space/api/cars',
-      body: {
-        brand: carDetails.brand,
-        model: carDetails.model,
-        mileage: carDetails.mileage
-      },
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((response) => {
-      // Валидация ответа
-      expect(response.status).to.eq(200);
-      return response.body.data;
-    });
+  // Ждем завершения запроса и возвращаем carId
+  cy.wait('@createCar').then((interception) => {
+    expect(interception.response.statusCode).to.eq(201);
+    const carId = interception.response.body.id;
+    cy.wrap(carId);
   });
+});
+
+Cypress.Commands.add('deleteCar', (carId) => {
+  cy.request({
+    method: 'DELETE',
+    url: `https://qauto.forstudy.space/api/cars/${carId}`,
+    headers: {
+      Authorization: `Bearer ${Cypress.env('token')}`
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+  });
+});
+
+Cypress.Commands.add('createExpense', (carId, expense) => {
+  cy.request({
+    method: 'POST',
+    url: 'https://qauto.forstudy.space/api/expenses',
+    headers: {
+      'Authorization': `Bearer ${Cypress.env('token')}`
+    },
+    body: {
+      carId: carId,
+      liters: expense.liters,
+      totalCost: expense.totalCost,
+      pricePerLiter: expense.pricePerLiter
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+    return response.body;
+  });
+});
