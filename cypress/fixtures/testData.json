@@ -1,0 +1,13 @@
+{
+    "post": {
+      "title": "Nissan",
+      "body": "Leaf",
+      "userId": 1
+    },
+    "updatedPost": {
+      "id": 1,
+      "title": "Renault",
+      "body": "Zoe",
+      "userId": 1
+    }
+  }

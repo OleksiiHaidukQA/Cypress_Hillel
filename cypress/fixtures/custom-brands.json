@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Deawoo",
+    "logoFilename": "audi.png"
+  },
+  {
+    "id": 2,
+    "title": "Renault",
+    "logoFilename": "bmw.png"
+  }
+]
