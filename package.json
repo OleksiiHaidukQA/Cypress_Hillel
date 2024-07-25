@@ -9,7 +9,8 @@
     "open": "cypress open",
     "test:qa1": "cypress run --config-file cypress.config.qa1.js --spec 'cypress/e2e/Homework_19.1/*.cy.js'",
     "test:qa2": "cypress run --config-file cypress.config.qa2.js --spec 'cypress/e2e/Homework_19.1/*.cy.js'",
-    "open ui": "npx cypress open --config-file cypress.config.qa2.js"
+    "open ui": "npx cypress open --config-file cypress.config.qa2.js",
+    "open ui jsonplaceholder": "npx cypress open --config-file cypress.config.jsonplaceholder.js"
   },
   "author": "",
   "license": "ISC",

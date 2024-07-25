@@ -1,6 +1,6 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
+export default defineConfig({
   watchForFileChanges: false,
   defaultCommandTimeout: 10000,
   viewportWidth: 1280,
@@ -13,7 +13,7 @@ module.exports = defineConfig({
   video: false,
   //responseTimeout: 30000,
   e2e: {
-    baseUrl: 'https://guest:welcome2qauto@qauto2.forstudy.space/',
+    baseUrl: 'https://jsonplaceholder.typicode.com/',
     retries: {
       runMode: 1, //without UI
       openMode: 1 //with UI
