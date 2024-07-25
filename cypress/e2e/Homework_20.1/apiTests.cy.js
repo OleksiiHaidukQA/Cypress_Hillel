@@ -1,5 +1,17 @@
-// cypress/integration/apiTests.spec.js
 describe('JSONPlaceholder API Tests', () => {
+
+    const postData = {
+        title: 'BYD',
+        body: 'E5',
+        userId: 1
+    };
+
+    const updatedPostData = {
+        id: 1,
+        title: 'Tesla',
+        body: 'Model S',
+        userId: 1
+    };
 
     it('Get post by ID', () => {
         const id = 1; 
@@ -17,35 +29,17 @@ describe('JSONPlaceholder API Tests', () => {
     });
   
     it('Create new post', () => {
-      cy.request('POST', '/posts', {
-        title: 'BYD',
-        body: 'E5',
-        userId: 1
-      }).then((response) => {
+      cy.request('POST', '/posts', postData).then((response) => {
         expect(response.status).to.eq(201);
-        expect(response.body).to.include({
-          title: 'BYD',
-          body: 'E5',
-          userId: 1
-        });
+        expect(response.body).to.include(postData);
       });
     });
   
     it('Update post by ID', () => {
         const id = 1;
-      cy.request('PUT', `/posts/${id}`, {
-        id: id,
-        title: 'Tesla',
-        body: 'Model S',
-        userId: 1
-      }).then((response) => {
+      cy.request('PUT', `/posts/${id}`, updatedPostData).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.body).to.include({
-          id: id,
-          title: 'Tesla',
-          body: 'Model S',
-          userId: 1
-        });
+        expect(response.body).to.include(updatedPostData);
       });
     });
   
@@ -55,4 +49,4 @@ describe('JSONPlaceholder API Tests', () => {
         expect(response.status).to.eq(200);
       });
     });
-  });
+});
